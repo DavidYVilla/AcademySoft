@@ -33,10 +33,24 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-                        <li>uno</li>
-                        <li>dos</li>
-                    </ul>
+                    @guest
+                    @else
+                        <ul class="navbar-nav me-auto">
+                            @if (auth()->user()->tipo == 'Administrador')
+                                <li class="nav-item"><a href="{{ url('/usuarios/listar') }}"
+                                        class="nav-link {{ request()->is('usuarios*') ? 'active' : '' }} ">Usuarios</a></li>
+                                <li class="nav-item"><a href="#"
+                                        class="nav-link {{ request()->is('home*') ? 'active' : '' }}">menuadministrador2</a>
+                                </li>
+                            @endif
+                            <li class="nav-item"><a href="{{ url('/cursos/index') }}"
+                                    class="nav-link {{ request()->is('curso*') ? 'active' : '' }}">Cursos</a></li>
+                            <li class="nav-item"><a href="#"
+                                    class="nav-link {{ request()->is('home*') ? 'active' : '' }}">menuestudiante2</a> </li>
+
+
+                        </ul>
+                    @endguest
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -57,7 +71,7 @@
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    {{ Auth::user()->tipo }} | {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -72,8 +86,10 @@
                                     </form>
                                 </div>
                             </li>
+
                         @endguest
                     </ul>
+
                 </div>
             </div>
         </nav>
