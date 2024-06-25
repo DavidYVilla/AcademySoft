@@ -39,14 +39,14 @@
                             @if (auth()->user()->tipo == 'Administrador')
                                 <li class="nav-item"><a href="{{ url('/usuarios/listar') }}"
                                         class="nav-link {{ request()->is('usuarios*') ? 'active' : '' }} ">Usuarios</a></li>
-                                <li class="nav-item"><a href="#"
-                                        class="nav-link {{ request()->is('home*') ? 'active' : '' }}">menuadministrador2</a>
-                                </li>
                             @endif
                             <li class="nav-item"><a href="{{ url('/cursos/index') }}"
                                     class="nav-link {{ request()->is('curso*') ? 'active' : '' }}">Cursos</a></li>
                             <li class="nav-item"><a href="{{ url('/asignaciones/index') }}"
                                     class="nav-link {{ request()->is('asignacion*') ? 'active' : '' }}">Asignaciones</a>
+                            </li>
+                            <li class="nav-item"><a href="{{ url('/tareas/index') }}"
+                                    class="nav-link {{ request()->is('tareas*') ? 'active' : '' }}">Tareas</a>
                             </li>
 
 

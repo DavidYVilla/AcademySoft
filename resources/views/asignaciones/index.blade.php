@@ -52,35 +52,39 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($asignaciones as $item)
-                                                <tr>
-                                                    <td>{{ $item->id }}</td>
-                                                    <td>{{ $item->usuario->name }}</td>
-                                                    <td>{{ $item->curso->nombre }}</td>
-                                                    <td>{{ $item->fecha_inicio }}</td>
-                                                    <td>{{ $item->fecha_finalizacion }}</td>
-                                                    <td>{{ $item->importe }}</td>
-                                                    <td>
-                                                        @if ($item->estado == true)
-                                                            <span class="badge text-success">Activo</span>
-                                                        @else
-                                                            <span class="badge text-danger">Inactivo</span>
-                                                        @endif
-                                                    </td>
-                                                    @if (auth()->user()->tipo == 'Administrador')
+                                                @if (auth()->user()->id == $item->usuario->id || auth()->user()->tipo == 'Administrador')
+                                                    <tr>
+                                                        <td>{{ $item->id }}</td>
+                                                        <td>{{ $item->usuario->name }}</td>
+                                                        <td>{{ $item->curso->nombre }}</td>
+                                                        <td>{{ $item->fecha_inicio }}</td>
+                                                        <td>{{ $item->fecha_finalizacion }}</td>
+                                                        <td>{{ $item->importe }}</td>
                                                         <td>
-                                                            <a href="{{ url('/asignaciones/actualizar/' . $item->id) }}"
-                                                                class="btn btn-sm btn-warning">📑</a>
                                                             @if ($item->estado == true)
-                                                                <a href="{{ url('/asignaciones/estado/' . $item->id) }}"
-                                                                    class="btn btn-sm btn-danger">🚫</a>
+                                                                <span class="badge text-success">Activo</span>
                                                             @else
-                                                                <a href="{{ url('/asignaciones/estado/' . $item->id) }}"
-                                                                    class="btn btn-sm btn-success">✔</a>
+                                                                <span class="badge text-danger">Inactivo</span>
                                                             @endif
                                                         </td>
-                                                    @endif
+                                                        @if (auth()->user()->tipo == 'Administrador')
+                                                            <td>
+                                                                <a href="{{ url('/asignaciones/actualizar/' . $item->id) }}"
+                                                                    class="btn btn-sm btn-warning">📑</a>
+                                                                @if ($item->estado == true)
+                                                                    <a href="{{ url('/asignaciones/estado/' . $item->id) }}"
+                                                                        class="btn btn-sm btn-danger">🚫</a>
+                                                                @else
+                                                                    <a href="{{ url('/asignaciones/estado/' . $item->id) }}"
+                                                                        class="btn btn-sm btn-success">✔</a>
+                                                                @endif
+                                                                <a href="{{ url('/tareas/registrar/' . $item->id . '/' . $item->usuario->name . '/' . $item->curso->nombre) }}"
+                                                                    class="btn btn-sm btn-primary">Tarea</a>
+                                                            </td>
+                                                        @endif
 
-                                                </tr>
+                                                    </tr>
+                                                @endif
                                             @endforeach
                                         </tbody>
                                     </table>

@@ -1,6 +1,7 @@
 <?php
 
 use GuzzleHttp\Middleware;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,4 +47,12 @@ Route::group(['middleware'=>['auth']], function(){
     Route::get('/asignaciones/estado/{id}', [App\Http\Controllers\AsignacionesController::class, 'estado']);
     //Route::get('/asignaciones/ver/{id}', [App\Http\Controllers\CursoController::class, 'show']);
 
+    //rutas para tareas
+    Route::get('/tareas/index', [App\Http\Controllers\TareasController::class, 'index']);
+    Route::get('/tareas/registrar/{id}/{usuario}/{curso}', [App\Http\Controllers\TareasController::class, 'create']);
+    Route::post('/tareas/registrar/{id}', [App\Http\Controllers\TareasController::class, 'store']);
+    Route::get('/tareas/actualizar/{id}', [App\Http\Controllers\TareasController::class, 'edit']);
+    Route::put('/tareas/actualizar/{id}', [App\Http\Controllers\TareasController::class, 'update']);
+    Route::get('/tareas/entregar/{id}', [App\Http\Controllers\TareasController::class, 'estado']);
+    //Route::get('/tareas/ver/{id}', [App\Http\Controllers\TareasController::class, 'show']);
 });

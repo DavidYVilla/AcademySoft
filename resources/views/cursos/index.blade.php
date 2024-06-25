@@ -78,6 +78,7 @@
                                                                 <a href="{{ url('/cursos/estado/' . $item->id) }}"
                                                                     class="btn btn-sm btn-success">✔</a>
                                                             @endif
+
                                                         </td>
                                                     @endif
 
