@@ -45,8 +45,9 @@
                             @endif
                             <li class="nav-item"><a href="{{ url('/cursos/index') }}"
                                     class="nav-link {{ request()->is('curso*') ? 'active' : '' }}">Cursos</a></li>
-                            <li class="nav-item"><a href="#"
-                                    class="nav-link {{ request()->is('home*') ? 'active' : '' }}">menuestudiante2</a> </li>
+                            <li class="nav-item"><a href="{{ url('/asignaciones/index') }}"
+                                    class="nav-link {{ request()->is('asignacion*') ? 'active' : '' }}">Asignaciones</a>
+                            </li>
 
 
                         </ul>

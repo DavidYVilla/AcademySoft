@@ -36,5 +36,14 @@ Route::group(['middleware'=>['auth']], function(){
     Route::get('/cursos/actualizar/{id}', [App\Http\Controllers\CursoController::class, 'edit']);
     Route::put('/cursos/actualizar/{id}', [App\Http\Controllers\CursoController::class, 'update']);
     Route::get('/cursos/estado/{id}', [App\Http\Controllers\CursoController::class, 'estado']);
-    Route::get('/cursos/ver/{id}', [App\Http\Controllers\CursoController::class, 'show']);
+    //Route::get('/cursos/ver/{id}', [App\Http\Controllers\CursoController::class, 'show']);
+     //rutas para asignaciones
+    Route::get('/asignaciones/index', [App\Http\Controllers\AsignacionesController::class, 'index']);
+    Route::get('/asignaciones/registrar', [App\Http\Controllers\AsignacionesController::class, 'create']);
+    Route::post('/asignaciones/registrar', [App\Http\Controllers\AsignacionesController::class, 'store']);
+    Route::get('/asignaciones/actualizar/{id}', [App\Http\Controllers\AsignacionesController::class, 'edit']);
+    Route::put('/asignaciones/actualizar/{id}', [App\Http\Controllers\AsignacionesController::class, 'update']);
+    Route::get('/asignaciones/estado/{id}', [App\Http\Controllers\AsignacionesController::class, 'estado']);
+    //Route::get('/asignaciones/ver/{id}', [App\Http\Controllers\CursoController::class, 'show']);
+
 });
